@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine Surprise</title>
+    <style>
+        body {
+            background-color: pink;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        .kiss-animation {
+            width: 100%;
+            height: 60vh;
+            background: url('https://media.giphy.com/media/3o6gDUfmjGOPlZRave/giphy.gif') no-repeat center;
+            background-size: contain;
+        }
+        .message-box {
+            display: none;
+            background-color: pink;
+            color: red;
+            font-size: 1.5em;
+            padding: 20px;
+            border-radius: 15px;
+            width: 50%;
+            margin: 20px auto;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .chocolate, .flower {
+            position: absolute;
+            width: 40px;
+            animation: fall 5s linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-100px); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="kiss-animation"></div>
+    
+    <script>
+        function createFallingElements(type, src) {
+            for (let i = 0; i < 15; i++) {
+                let element = document.createElement("img");
+                element.src = src;
+                element.className = type;
+                element.style.left = Math.random() * 100 + "vw";
+                element.style.animationDuration = (Math.random() * 3 + 2) + "s";
+                document.body.appendChild(element);
+                setTimeout(() => element.remove(), 5000);
+            }
+        }
+        setInterval(() => createFallingElements('chocolate', 'https://example.com/chocolate.png'), 1000);
+        setInterval(() => createFallingElements('flower', 'https://example.com/flower.png'), 1000);
+        
+        setTimeout(() => {
+            document.querySelector('.kiss-animation').style.display = 'none';
+            let messageBox = document.createElement('div');
+            messageBox.className = 'message-box';
+            messageBox.innerHTML = 'I love you soo much baby, I am sorry for everything and thank you for being in my life, muuuuuuuaaaaaa babyyyyy  aur mujko bahut aacha laga tha tumhara gift thankyou so much mera itna dhyan rakhne ke liye aur itna pyaar dene ke liye❤️💕❤️';
+            document.body.appendChild(messageBox);
+            messageBox.style.display = 'block';
+        }, 5000);
+    </script>
+</body>
+</html>
